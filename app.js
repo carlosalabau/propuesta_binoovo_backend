@@ -6,6 +6,7 @@ var logger = require('morgan');
 
 var tasksRouter = require('./routes/tasks');
 var usersRouter = require('./routes/users');
+const loginRouter = require('./routes/login');
 
 const mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost:27017/myProyect').then(() => console.log('Conectado con exito')).catch(err => console.log(err));
@@ -24,6 +25,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/users', usersRouter);
 app.use('/tasks', tasksRouter);
+app.use('/login', loginRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
