@@ -50,7 +50,7 @@ const UsersController = {
     async deleteUser(req, res) {
         try {
             const id = req.params.id;
-            await UserModel.deleteOne({_id: id})
+            await UserModel.findOneAndDelete({_id: id})
             res.status(200).send('Usuario eliminado con exito')
         } catch (error) {
             res.status(500).send('Ha ocurrido un error', error)
