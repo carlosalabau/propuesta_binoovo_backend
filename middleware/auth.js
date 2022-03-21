@@ -21,7 +21,7 @@ const hasPermission = async (req, res, next) => {
         if(user.rol != admin) return res.status(401).json('No tienes permisos para realizar esta accion')
         next()
     } catch (error) {
-        
+        res.status(500).json(error)
     }
 }
 

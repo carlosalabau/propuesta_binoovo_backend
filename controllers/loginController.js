@@ -10,7 +10,7 @@ const LoginController = {
             const isMatch = await bcrypt.compare(user.password, existUser.password);
             if(!isMatch) return res.status(401).json('Email o password incorrectos')
             const token = jwt.sign({_id: user.id}, 'pepitopalotes', {expiresIn: '24h'});
-            res.status(200).json(token)
+            res.status(200).json({token, user: existUser})
         } catch (error) {
             res.status(500).json(error)
         }

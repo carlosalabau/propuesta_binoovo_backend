@@ -4,11 +4,11 @@ const TaskController = require('../controllers/tasksController');
 const {autenthication, hasPermission} = require('../middleware/auth');
 
 /* GET home page. */
-router.get('/', TaskController.getAllTasks);
-router.get('/:idUser', autenthication, hasPermission, TaskController.getTasksByUser);
-router.put('/assign/:id', TaskController.assignTask);
-router.post('/create', TaskController.createTask);
-router.post('/update/:id', TaskController.editTask);
-router.delete('/delete/:id', TaskController.deleteTask);
+router.get('/', autenthication, hasPermission, TaskController.getAllTasks);
+router.get('/:idUser', autenthication, TaskController.getTasksByUser);
+router.put('/assign/:id', autenthication, hasPermission, TaskController.assignTask);
+router.post('/create', autenthication, hasPermission, TaskController.createTask);
+router.post('/update/:id', autenthication, hasPermission, TaskController.editTask);
+router.delete('/delete/:id', autenthication, hasPermission, TaskController.deleteTask);
 
 module.exports = router;
